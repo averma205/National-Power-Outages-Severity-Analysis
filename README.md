@@ -105,7 +105,7 @@ The uneven distribution of outages across regions suggests that certain geograph
   frameborder="0"
 ></iframe>
 
-## Bivariate Analysis: Statewide Average Prices vs. Electricity Consumed
+### Bivariate Analysis: Statewide Average Prices vs. Electricity Consumed
 
 This scatter plot shows the relationship between **average monthly electricity prices (in cents per kilowatt-hour)** and **statewide electricity consumption (in megawatt-hours)**. Each point represents a state's electricity pricing and consumption data.
 
@@ -135,7 +135,7 @@ This analysis indicates that lower electricity prices may encourage higher consu
 ></iframe>
 
 
-## Grouped Analysis: Outage Duration by Climate Category and State
+### Grouped Analysis: Outage Duration by Climate Category and State
 
 This pivot table displays the **average power outage duration (in hours)** across U.S. states, categorized by climate conditions (`cold`, `normal`, `warm`).
 
@@ -314,7 +314,75 @@ The performance of the baseline model was evaluated using **accuracy** as the me
 
 This baseline model provides a starting point for the classification task. While its performance is modest, the systematic transformation of features and use of a pipeline lays the groundwork for a more robust and accurate final model in the next step.
 
+---
 
+## Final Model
+
+---
+
+#### Features Added and Their Relevance
+
+In the final model, two new features were engineered in addition to the existing transformations from the baseline model:
+
+- **Quadratic Interactions of Numerical Features**:
+  - **Example**: Interaction terms like `IND.PRICE` × `COM.PRICE` were created to capture nonlinear relationships between numerical variables.
+  - **Relevance**: These interactions allow the model to account for combined effects of multiple features that could influence power outage severity, such as the interplay between industrial and commercial energy pricing.
+
+- **One-Hot Encoding of Additional Categorical Features**:
+  - Features like `CLIMATE.CATEGORY` and `CAUSE.CATEGORY` were encoded to ensure their usability in the model.
+  - **Relevance**: These categories provide critical information about the environment and causes of outages, which are directly tied to outage severity.
+
+- **Quantile Transformation on `CUSTOMERS.AFFECTED`**:
+  - This transformation normalized the distribution of `CUSTOMERS.AFFECTED` to reduce the influence of outliers.
+  - **Relevance**: By normalizing, the model better captures patterns among typical outages, reducing noise caused by extreme values.
+
+---
+
+#### Modeling Algorithm and Pipeline
+
+The final model used a **Random Forest Classifier** as the predictive algorithm. All preprocessing steps, including feature engineering, were integrated into a unified **sklearn pipeline**. The pipeline included:
+- One-hot encoding for categorical variables.
+- Quadratic feature generation for numerical variables.
+- Normalization of heavily skewed features like `CUSTOMERS.AFFECTED`.
+
+This streamlined implementation ensured reproducibility and avoided data leakage during training and evaluation.
+
+---
+
+#### Hyperparameter Tuning
+
+A **GridSearchCV** approach was employed to optimize hyperparameters for the Random Forest Classifier. The following hyperparameters were tuned:
+- **Number of estimators (`n_estimators`)**: Explored values of 105, 115, and 125 to determine the best ensemble size.
+- **Maximum depth (`max_depth`)**: Ranged from 2 to 20 to balance overfitting and underfitting.
+- **Minimum samples split (`min_samples_split`)**: Ranged from 2 to 10 to evaluate splits for leaf nodes.
+- **Criterion**: Tested Gini impurity, entropy, and log loss to identify the best splitting criteria.
+- **Maximum features (`max_features`)**: Evaluated options like square root, log2, and None.
+
+The best parameters identified were:
+- `n_estimators`: **125**
+- `max_depth`: **6**
+- `min_samples_split`: **4**
+- `criterion`: **gini**
+- `max_features`: **None**
+
+---
+
+#### Final Model Performance
+
+The final model was evaluated on unseen test data using **accuracy** as the performance metric. The results showed:
+- **Baseline Model Accuracy**: **38.2%**
+- **Final Model Accuracy**: **44.6%**
+
+This represents a significant improvement of approximately **6.4 percentage points**, showcasing the impact of feature engineering and hyperparameter tuning.
+
+---
+
+#### Explanation of Improvement
+
+The improvement in accuracy is attributed to:
+- **Enhanced Feature Representation**: The inclusion of quadratic terms captured nonlinear interactions, which were not accounted for in the baseline model.
+- **Hyperparameter Optimization**: GridSearchCV ensured the model was fine-tuned for optimal performance, avoiding both underfitting and overfitting.
+- **Categorical Data Encoding**: Proper encoding of categorical features allowed the model to leverage all available data effectively.
 
 
 
