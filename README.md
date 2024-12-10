@@ -83,6 +83,12 @@ We analyzed the distribution of key variables:
 - **Outage Duration**: Most outages lasted between 1 to 20 hours, with a few extreme cases extending beyond 100 hours.
 - **Demand Loss (MW)**: Severe weather events resulted in the largest power demand losses.
 - **Customer Impact**: Events affecting more than 1 million customers were predominantly caused by hurricanes or snowstorms.
+<iframe
+  src="assets/NERC.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 #### Example Visualization: Distribution of Outage Durations
 ![Outage Duration Distribution](assets/outage_duration_histogram.png)
@@ -91,18 +97,34 @@ We analyzed the distribution of key variables:
 We explored relationships between outage causes and their impacts:
 - Severe weather events had the highest average outage durations and customer impact.
 - Equipment faults were more frequent but generally caused shorter outages.
-
-#### Visualization: Average Outage Duration by Cause
-![Average Outage Duration by Cause](assets/avg_duration_by_cause.png)
-
-#### 3. Regional Trends
-Using geographical data, we identified regions most susceptible to severe outages:
-- **Highest Duration**: MRO (Midwest Reliability Organization).
-- **Most Customers Affected**: SERC (Southeastern Electric Reliability Council).
-
 <iframe
   src="assets/statewide_avg_price_vs_electricity_consumed.html"
   width="800"
   height="600"
   frameborder="0"
 ></iframe>
+
+
+#### Visualization: Average Outage Duration by Cause
+![Average Outage Duration by Cause](assets/avg_duration_by_cause.png)
+
+#### 3. Regional Trends
+### Average Outage Duration by Climate Category and State
+
+This table shows the average outage duration (in hours) for U.S. states, categorized by climate conditions (`cold`, `normal`, and `warm`).
+
+| **CLIMATE.CATEGORY**     | **Cold**   | **Normal** | **Warm**    |
+|--------------------------|-----------:|-----------:|------------:|
+| **U.S. State**           |            |            |             |
+| **Alabama**              | 2247.00    | 233.50     | 803.00      |
+| **Arizona**              | 74.00      | 789.54     | 14741.29    |
+| **Arkansas**             | 2538.14    | 556.20     | 3916.33     |
+| **California**           | 1787.67    | 1273.50    | 2117.45     |
+| **Colorado**             | 860.67     | 151.29     | 2243.50     |
+| **Connecticut**          | 316.00     | 1193.80    | 4592.50     |
+| **Delaware**             | 50.91      | 27.12      | 1510.67     |
+| **District of Columbia** | 2076.80    | 5691.50    | 9886.00     |
+| **Florida**              | 494.30     | 6109.00    | 3952.88     |
+| **Georgia**              | 2256.00    | 1152.71    | 963.17      |
+
+
