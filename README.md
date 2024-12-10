@@ -264,6 +264,57 @@ We aim to classify the severity of power outages into discrete categories based 
 
 - **Justification**: These features are available at the **time of prediction** and are key indicators of the severity of an outage. No features that would be unavailable during the outage (e.g., post-event metrics) were used.
 
+---
+
+## Baseline Model
+
+---
+
+#### Model Description
+
+For the baseline model, we built a **multiclass classification model** to predict the severity of power outages based on the `DEMAND.LOSS.MW` column, categorized into eight distinct levels of severity. The model was trained using a **Decision Tree Classifier** implemented in an **sklearn pipeline**.
+
+---
+
+#### Features Used
+
+- **Quantitative Features**:
+  - `OUTAGE.DURATION` (numerical)
+  - `DEMAND.LOSS.MW` (numerical)
+  - `MEGAWATT.HOURS` (numerical, derived feature)
+  - `CUSTOMERS.AFFECTED` (numerical)
+
+- **Categorical Features**:
+  - `CLIMATE.REGION` (nominal, one-hot encoded)
+  - `CAUSE.CATEGORY` (nominal, one-hot encoded)
+
+- **Feature Engineering**:
+  - One-hot encoding was applied to categorical columns (`CLIMATE.REGION`, `CAUSE.CATEGORY`) to transform them into numerical representations.
+  - Quadratic combinations of numerical features were created to capture potential interactions between predictors.
+
+---
+
+#### Pipeline Implementation
+
+All feature transformations (one-hot encoding, quadratic feature creation) and model training steps were implemented within an **sklearn pipeline** to ensure a seamless and reproducible workflow.
+
+---
+
+#### Model Performance
+
+The performance of the baseline model was evaluated using **accuracy** as the metric on unseen test data. The accuracy score achieved by the baseline model was approximately **38.2%**.
+
+- **Interpretation**:
+  - While the model performs better than random guessing for this eight-class classification problem, there is significant room for improvement.
+  - The baseline model serves as a foundation for identifying areas to refine feature selection, engineering, and model architecture in subsequent iterations.
+
+---
+
+#### Conclusion
+
+This baseline model provides a starting point for the classification task. While its performance is modest, the systematic transformation of features and use of a pipeline lays the groundwork for a more robust and accurate final model in the next step.
+
+
 
 
 
