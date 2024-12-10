@@ -36,7 +36,7 @@ The dataset required significant preprocessing to ensure accuracy:
 3. Removed irrelevant columns like `variables` and rows with excessive missingness.
 
 #### Head of Cleaned DataFrame
-```plaintext
+
 | OUTAGE.DURATION | DEMAND.LOSS.MW | CAUSE.CATEGORY | NERC.REGION | CUSTOMERS.AFFECTED |
 |-----------------|----------------|----------------|-------------|--------------------|
 | 1000           | 500            | Severe Weather | MRO         | 10000             |
