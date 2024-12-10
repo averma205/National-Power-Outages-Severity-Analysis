@@ -63,9 +63,16 @@ The cleaned dataset now:
 - Has a consistent structure, enabling more effective analysis.
 
 This cleaned dataset serves as the foundation for the exploratory and predictive analysis in subsequent sections.
-Glimpse of the first few rows and columns of the cleaned dataset:
 
-print(cleaned.head().to_markdown(index=False))
+Glimpse of few rows and columns of the cleaned dataset:
+
+| NERC.REGION | CAUSE.CATEGORY.DETAIL | CUSTOMERS.AFFECTED | OUTAGE.DURATION | DEMAND.LOSS.MW |
+|-------------|------------------------|--------------------|-----------------|----------------|
+| MRO         | vandalism             | NaN                | 135.0           | NaN            |
+| RFC         | thunderstorm          | 48000.0            | 3000.0          | 10.0           |
+| MRO         | NaN                   | 7000.0             | 32.0            | 15.0           |
+| RFC         | Coal                  | NaN                | 108653.0        | NaN            |
+| MRO         | Coal                  | NaN                | 8468.0          | NaN            |
 
 ---
 
