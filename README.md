@@ -165,4 +165,41 @@ This pivot table displays the **average power outage duration (in hours)** acros
 | **Florida**              | 494.30     | 6109.00    | 3952.88     |
 | **Georgia**              | 2256.00    | 1152.71    | 963.17      |
 
+## Step 3: Assessment of Missingness
+
+---
+
+#### NMAR Analysis
+
+We hypothesize that the missingness in the `CAUSE.CATEGORY.DETAIL` column is **Not Missing At Random (NMAR)**. The missingness could result from inconsistent reporting practices by different utility companies or a lack of precise categorization for certain outage causes.
+
+To confirm this, additional data, such as internal reporting standards or more detailed event logs from utility companies, would be needed. With this extra information, we could potentially conclude that the missingness is **Missing At Random (MAR)** if it's dependent on the reporting organization or another observable factor.
+
+---
+
+#### Missingness Dependency Analysis
+
+We analyzed whether the missingness in the `CAUSE.CATEGORY.DETAIL` column depends on other variables in the dataset using permutation tests.
+
+1. **Dependency on `CAUSE.CATEGORY`**:
+   - The missingness in `CAUSE.CATEGORY.DETAIL` **does depend** on the `CAUSE.CATEGORY` column. The permutation test yielded a p-value of **0.0**, indicating a significant dependency. This relationship suggests that specific outage categories are more prone to missing details.
+
+2. **No Dependency on `OUTAGE.DURATION`**:
+   - The missingness in `CAUSE.CATEGORY.DETAIL` **does not depend** on the `OUTAGE.DURATION` column. The p-value of approximately **0.074** suggests no statistically significant relationship.
+
+---
+
+#### Key Results
+
+1. **Empirical Distribution of Test Statistic**:
+   - The observed test statistic for the dependency between `CAUSE.CATEGORY.DETAIL` and `CAUSE.CATEGORY` is **0.4**, which is more extreme than any randomly generated test statistics.
+   - For `OUTAGE.DURATION`, the observed test statistic difference of means was approximately **-590.8**, with no significant deviation from the random distribution.
+
+---
+
+#### Interpretation
+
+These results indicate that the missingness in `CAUSE.CATEGORY.DETAIL` is likely influenced by the `CAUSE.CATEGORY`, suggesting a **MAR mechanism**. However, no dependency was found with `OUTAGE.DURATION`. This exploration helps refine our understanding of missingness and guides further cleaning and analysis.
+
+
 
