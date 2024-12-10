@@ -76,16 +76,14 @@ Glimpse of few rows and columns of the cleaned dataset:
 
 ---
 
-### Exploratory Data Analysis (EDA)
+## Exploratory Data Analysis (EDA)
 
-# Univariate Analysis: Outages by NERC Region
+### Univariate Analysis: Outages by NERC Region
 
 This bar plot displays the distribution of power outages across various NERC (North American Electric Reliability Corporation) regions. The plot highlights the total number of outages reported in each region, showcasing regional differences in grid reliability and vulnerability.
 
 ---
-
-# Key Observations:
-
+### Key Observations:
 1. **High Outage Counts in Specific Regions**:
    - The **WECC (Western Electricity Coordinating Council)** and **RFC (ReliabilityFirst Corporation)** regions report the highest number of outages, exceeding 400 incidents each. These regions cover vast areas with diverse climates and populations, likely contributing to the higher counts.
 
@@ -98,8 +96,7 @@ This bar plot displays the distribution of power outages across various NERC (No
 
 ---
 
-# Interpretation:
-
+### Interpretation:
 The uneven distribution of outages across regions suggests that certain geographic and climatic conditions, combined with infrastructural factors, may contribute to the reliability of the power grid. Further analysis could investigate the relationship between outages and factors like population density, weather patterns, or grid infrastructure quality.
 <iframe
   src="assets/NERC.html"
@@ -108,13 +105,13 @@ The uneven distribution of outages across regions suggests that certain geograph
   frameborder="0"
 ></iframe>
 
-### Bivariate Analysis: Statewide Average Prices vs. Electricity Consumed
+## Bivariate Analysis: Statewide Average Prices vs. Electricity Consumed
 
 This scatter plot shows the relationship between **average monthly electricity prices (in cents per kilowatt-hour)** and **statewide electricity consumption (in megawatt-hours)**. Each point represents a state's electricity pricing and consumption data.
 
 ---
 
-# Key Observations:
+### Key Observations:
 1. **Negative Association**:
    - The plot suggests a negative association between price and consumption. States with lower electricity prices tend to consume higher amounts of electricity, while higher electricity prices correspond to lower consumption.
 
@@ -127,7 +124,7 @@ This scatter plot shows the relationship between **average monthly electricity p
 
 ---
 
-# Interpretation
+### Interpretation
 This analysis indicates that lower electricity prices may encourage higher consumption, aligning with economic principles of supply and demand. However, additional factors like state population, industrial presence, and climate likely contribute to this relationship. Further investigation through hypothesis testing or regression modeling could quantify these effects and identify causation.
 
 <iframe
@@ -138,13 +135,13 @@ This analysis indicates that lower electricity prices may encourage higher consu
 ></iframe>
 
 
-### Grouped Analysis: Outage Duration by Climate Category and State
+## Grouped Analysis: Outage Duration by Climate Category and State
 
 This pivot table displays the **average power outage duration (in hours)** across U.S. states, categorized by climate conditions (`cold`, `normal`, `warm`).
 
 ---
 
-# Key Insights:
+### Key Insights:
 1. **Cold Climates Lead to Longer Outages**:
    - States like **Arkansas** and **District of Columbia** show significantly higher outage durations in colder conditions, highlighting infrastructure vulnerabilities during extreme weather.
 
