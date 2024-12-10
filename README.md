@@ -165,7 +165,7 @@ This pivot table displays the **average power outage duration (in hours)** acros
 | **Florida**              | 494.30     | 6109.00    | 3952.88     |
 | **Georgia**              | 2256.00    | 1152.71    | 963.17      |
 
-## Step 3: Assessment of Missingness
+## Assessment of Missingness
 
 ---
 
@@ -203,8 +203,6 @@ These results indicate that the missingness in `CAUSE.CATEGORY.DETAIL` is likely
 
 ## Hypothesis Testing
 
-#### Hypothesis Test 1: Outage Duration and NERC Regions
-
 **Question**: Does the average outage duration vary significantly across different NERC regions?
 
 **Null Hypothesis (H₀)**: The average outage duration does not change based on the NERC region it occurs in.  
@@ -225,6 +223,47 @@ These results indicate that the missingness in `CAUSE.CATEGORY.DETAIL` is likely
 #### Conclusion:
 
 With a p-value of **0.223**, we fail to reject the null hypothesis. This suggests that there is insufficient evidence to conclude that outage duration varies significantly across NERC regions. However, further exploration with additional data might uncover more subtle trends.
+
+---
+
+## Framing a Prediction Problem
+
+Our main goal is to **predict the severity of power outages** based on the `DEMAND.LOSS.MW` column of the dataset. The prediction problem we are addressing is a **classification problem**, specifically a **multiclass classification** task.
+
+---
+
+#### Problem Statement
+
+We aim to classify the severity of power outages into discrete categories based on the magnitude of the `DEMAND.LOSS.MW` values. To achieve this:
+1. The `DEMAND.LOSS.MW` column is divided into bins using `pd.qcut`, categorizing the values into **eight distinct levels of severity** (from 1 to 8).
+2. Each bin represents a range of demand loss, allowing us to classify outages as "low severity" to "high severity" events.
+
+---
+
+#### Response Variable
+
+- **Response Variable**: The severity level (from 1 to 8) based on the `DEMAND.LOSS.MW` column.
+- **Reason for Choosing This Variable**: Predicting outage severity is crucial for prioritizing responses and allocating resources efficiently during power outages.
+
+---
+
+#### Evaluation Metric
+
+- **Chosen Metric**: **Accuracy**  
+  - **Reason**: Accuracy was selected as the metric since the goal is to evaluate how well the model predicts the correct severity class across all states. While alternative metrics like F1-score could handle class imbalances better, accuracy provides a straightforward measure of the model's overall performance in this context.
+
+---
+
+#### Justification for Features
+
+- **Features Used for Prediction**:
+  - `CAUSE.CATEGORY` (e.g., severe weather, equipment failure)
+  - `NERC.REGION` (regional location of the outage)
+  - `OUTAGE.DURATION` (duration of the outage in hours)
+  - `CUSTOMERS.AFFECTED` (number of affected customers)
+
+- **Justification**: These features are available at the **time of prediction** and are key indicators of the severity of an outage. No features that would be unavailable during the outage (e.g., post-event metrics) were used.
+
 
 
 
