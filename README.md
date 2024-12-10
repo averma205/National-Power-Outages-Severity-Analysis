@@ -201,5 +201,31 @@ We analyzed whether the missingness in the `CAUSE.CATEGORY.DETAIL` column depend
 
 These results indicate that the missingness in `CAUSE.CATEGORY.DETAIL` is likely influenced by the `CAUSE.CATEGORY`, suggesting a **MAR mechanism**. However, no dependency was found with `OUTAGE.DURATION`. This exploration helps refine our understanding of missingness and guides further cleaning and analysis.
 
+## Hypothesis Testing
+
+#### Hypothesis Test 1: Outage Duration and NERC Regions
+
+**Question**: Does the average outage duration vary significantly across different NERC regions?
+
+**Null Hypothesis (H₀)**: The average outage duration does not change based on the NERC region it occurs in.  
+**Alternative Hypothesis (H₁)**: The average outage duration does change based on the NERC region it occurs in.
+
+**Test Statistic**: Total Variation Distance (TVD), calculated as the absolute difference in mean outage duration across NERC regions.  
+**Significance Level**: 0.05.
+
+---
+
+#### Results:
+
+- The observed test statistic (TVD) was approximately **0.2254**.
+- The resulting **p-value** was **0.223**, indicating that the observed difference in outage duration across NERC regions is not statistically significant at the 5% level.
+
+---
+
+#### Conclusion:
+
+With a p-value of **0.223**, we fail to reject the null hypothesis. This suggests that there is insufficient evidence to conclude that outage duration varies significantly across NERC regions. However, further exploration with additional data might uncover more subtle trends.
+
+
 
 
