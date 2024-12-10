@@ -3,7 +3,6 @@
 ## Contributors
 - **Arya Verma**
 - **Deepal Deleena**
-
 ---
 
 ## Introduction
@@ -42,3 +41,10 @@ The dataset required significant preprocessing to ensure accuracy:
 |-----------------|----------------|----------------|-------------|--------------------|
 | 1000           | 500            | Severe Weather | MRO         | 10000             |
 | 600            | 300            | Equipment Fault| ERCOT       | 5000              |
+
+<iframe
+  src="assets/statewide_avg_price_vs_electricity_consumed.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
