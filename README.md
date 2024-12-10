@@ -196,7 +196,7 @@ We analyzed whether the missingness in the `CAUSE.CATEGORY.DETAIL` column depend
    - For `OUTAGE.DURATION`, the observed test statistic difference of means was approximately **-590.8**, with no significant deviation from the random distribution.
 
 <iframe
-  src="assets/diff.html"
+  src="assets/diff_mean.html"
   width="800"
   height="450"
   frameborder="0"
