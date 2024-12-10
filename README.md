@@ -37,18 +37,35 @@ This analysis contributes to improving grid resilience and ensuring equitable en
 
 ## Data Cleaning and Exploratory Data Analysis (EDA)
 
-### Data Cleaning
-To prepare the dataset for analysis, we performed the following steps:
-1. **Addressing Missing Values**: Replaced missing values in critical columns like `OUTAGE.DURATION` and `DEMAND.LOSS.MW` with `NaN` for accurate analysis.
-2. **Standardizing Date and Time**: Unified date and time columns into `START.TIME` and `END.TIME` to enable calculations like outage duration.
-3. **Removing Irrelevant Features**: Dropped unnecessary columns such as `variables` and any rows with excessive missing values or irrelevant data.
-4. **Feature Engineering**: Created new features, including `OUTAGE.HOURS` (duration in hours) and `AFFECTED.PERCENTAGE` (percentage of customers affected in the region).
+## Data Cleaning
 
-### Snapshot of Cleaned DataFrame
-| OUTAGE.DURATION | DEMAND.LOSS.MW | CAUSE.CATEGORY | NERC.REGION | CUSTOMERS.AFFECTED | OUTAGE.HOURS | AFFECTED.PERCENTAGE |
-|-----------------|----------------|----------------|-------------|--------------------|--------------|---------------------|
-| 1000           | 500            | Severe Weather | MRO         | 10000             | 16.67        | 0.05%              |
-| 600            | 300            | Equipment Fault| ERCOT       | 5000              | 10.00        | 0.02%              |
+To prepare the dataset for analysis, several preprocessing steps were performed:
+
+1. **Combining Date and Time Columns**:
+   - Unified the `OUTAGE.START.DATE` and `OUTAGE.START.TIME` columns into a single `OUTAGE.START.DATE` column.
+   - Similarly, combined `OUTAGE.RESTORATION.DATE` and `OUTAGE.RESTORATION.TIME` into `OUTAGE.RESTORATION.DATE`.
+   - Dropped the original time columns after merging.
+
+2. **Feature Engineering**:
+   - Created a new column, `MEGAWATT.HOURS`, to measure the total energy impact of outages by multiplying `OUTAGE.DURATION` (in hours) with `DEMAND.LOSS.MW`.
+   - Converted outage duration from minutes to hours for easier interpretation.
+
+3. **Standardizing Month Information**:
+   - Mapped month names to numerical values using a dictionary to facilitate sorting and filtering.
+
+4. **Removing Unnecessary Columns**:
+   - Dropped irrelevant columns like `OUTAGE.START.TIME` and `OUTAGE.RESTORATION.TIME` after processing.
+
+### Key Improvements
+The cleaned dataset now:
+- Includes unified timestamp columns for outage start and restoration times.
+- Features new metrics like `MEGAWATT.HOURS` for a better understanding of energy impact.
+- Has a consistent structure, enabling more effective analysis.
+
+This cleaned dataset serves as the foundation for the exploratory and predictive analysis in subsequent sections.
+Glimpse of the first few rows and columns of the cleaned dataset:
+
+print(cleaned.head().to_markdown(index=False))
 
 ---
 
