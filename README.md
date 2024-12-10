@@ -195,6 +195,14 @@ We analyzed whether the missingness in the `CAUSE.CATEGORY.DETAIL` column depend
    - The observed test statistic for the dependency between `CAUSE.CATEGORY.DETAIL` and `CAUSE.CATEGORY` is **0.4**, which is more extreme than any randomly generated test statistics.
    - For `OUTAGE.DURATION`, the observed test statistic difference of means was approximately **-590.8**, with no significant deviation from the random distribution.
 
+<iframe
+  src="assets/difference_of_means.html"
+  width="800"
+  height="450"
+  frameborder="0"
+></iframe>
+
+
 ---
 
 #### Interpretation
