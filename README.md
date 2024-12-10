@@ -78,11 +78,25 @@ Glimpse of few rows and columns of the cleaned dataset:
 
 ### Exploratory Data Analysis (EDA)
 
-#### 1. Univariate Analysis
-We analyzed the distribution of key variables:
-- **Outage Duration**: Most outages lasted between 1 to 20 hours, with a few extreme cases extending beyond 100 hours.
-- **Demand Loss (MW)**: Severe weather events resulted in the largest power demand losses.
-- **Customer Impact**: Events affecting more than 1 million customers were predominantly caused by hurricanes or snowstorms.
+### Univariate Analysis: Outages by NERC Region
+
+This bar plot displays the distribution of power outages across various NERC (North American Electric Reliability Corporation) regions. The plot highlights the total number of outages reported in each region, showcasing regional differences in grid reliability and vulnerability.
+---
+## Key Observations:
+
+1. **High Outage Counts in Specific Regions**:
+   - The **WECC (Western Electricity Coordinating Council)** and **RFC (ReliabilityFirst Corporation)** regions report the highest number of outages, exceeding 400 incidents each. These regions cover vast areas with diverse climates and populations, likely contributing to the higher counts.
+
+2. **Regional Variability**:
+   - Moderate numbers of outages are observed in regions like **MRO (Midwest Reliability Organization)** and **SERC (Southeastern Electric Reliability Council)**.
+   - Regions like **ASCC (Alaska Systems Coordinating Council)** and **FRCC (Florida Reliability Coordinating Council)** report relatively fewer outages, possibly due to smaller geographic coverage or effective mitigation efforts.
+
+3. **Anomalies**:
+   - Some regions, such as **HI (Hawaii)**, report negligible outages. This may reflect differences in infrastructure, unique geographic conditions, or limited reporting.
+---
+## Interpretation:
+
+The uneven distribution of outages across regions suggests that certain geographic and climatic conditions, combined with infrastructural factors, may contribute to the reliability of the power grid. Further analysis could investigate the relationship between outages and factors like population density, weather patterns, or grid infrastructure quality.
 <iframe
   src="assets/NERC.html"
   width="800"
@@ -90,13 +104,26 @@ We analyzed the distribution of key variables:
   frameborder="0"
 ></iframe>
 
-#### Example Visualization: Distribution of Outage Durations
-![Outage Duration Distribution](assets/outage_duration_histogram.png)
+### Bivariate Analysis: Statewide Average Prices vs. Electricity Consumed
 
-#### 2. Bivariate Analysis
-We explored relationships between outage causes and their impacts:
-- Severe weather events had the highest average outage durations and customer impact.
-- Equipment faults were more frequent but generally caused shorter outages.
+## Visualization
+This scatter plot shows the relationship between **average monthly electricity prices (in cents per kilowatt-hour)** and **statewide electricity consumption (in megawatt-hours)**. Each point represents a state's electricity pricing and consumption data.
+---
+## Key Observations:
+
+1. **Negative Association**:
+   - The plot suggests a negative association between price and consumption. States with lower electricity prices tend to consume higher amounts of electricity, while higher electricity prices correspond to lower consumption.
+
+2. **Clustered Consumption**:
+   - Most states have electricity consumption below 20 million megawatt-hours, regardless of pricing.
+   - A smaller subset of states exhibits exceptionally high consumption levels (above 30 million megawatt-hours), which are primarily observed at lower price points (below 10 cents per kWh).
+
+3. **Outliers**:
+   - A few points represent states with significantly high prices (above 20 cents per kWh) and very low consumption, possibly due to smaller populations or specific pricing policies.
+---
+## Interpretation
+This analysis indicates that lower electricity prices may encourage higher consumption, aligning with economic principles of supply and demand. However, additional factors like state population, industrial presence, and climate likely contribute to this relationship. Further investigation through hypothesis testing or regression modeling could quantify these effects and identify causation.
+
 <iframe
   src="assets/statewide_avg_price_vs_electricity_consumed.html"
   width="800"
@@ -105,13 +132,19 @@ We explored relationships between outage causes and their impacts:
 ></iframe>
 
 
-#### Visualization: Average Outage Duration by Cause
-![Average Outage Duration by Cause](assets/avg_duration_by_cause.png)
+### Grouped Analysis: Outage Duration by Climate Category and State
 
-#### 3. Regional Trends
-### Average Outage Duration by Climate Category and State
+This pivot table displays the **average power outage duration (in hours)** across U.S. states, categorized by climate conditions (`cold`, `normal`, `warm`).
+---
+#### Key Insights:
+1. **Cold Climates Lead to Longer Outages**:
+   - States like **Arkansas** and **District of Columbia** show significantly higher outage durations in colder conditions, highlighting infrastructure vulnerabilities during extreme weather.
 
-This table shows the average outage duration (in hours) for U.S. states, categorized by climate conditions (`cold`, `normal`, and `warm`).
+2. **Warm Climates Have Unique Challenges**:
+   - **Arizona** exhibits very high outage durations under warm conditions, likely due to heat waves and increased energy demand.
+
+3. **State-Specific Trends**:
+   - States like **Florida** experience relatively higher outage durations under normal conditions compared to others.
 
 | **CLIMATE.CATEGORY**     | **Cold**   | **Normal** | **Warm**    |
 |--------------------------|-----------:|-----------:|------------:|
