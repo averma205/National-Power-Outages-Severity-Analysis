@@ -169,6 +169,7 @@ This pivot table displays the **average power outage duration (in hours)** acros
 
 ---
 
+
 #### NMAR Analysis
 
 We hypothesize that the missingness in the `CAUSE.CATEGORY.DETAIL` column is **Not Missing At Random (NMAR)**. The missingness could result from inconsistent reporting practices by different utility companies or a lack of precise categorization for certain outage causes.
@@ -201,6 +202,7 @@ We analyzed whether the missingness in the `CAUSE.CATEGORY.DETAIL` column depend
   height="450"
   frameborder="0"
 ></iframe>
+
 
 
 ---
